@@ -31,5 +31,22 @@ namespace MoodAnalyserTEst
             string result = analyse.AnalyzeMood("I am in Any Mood");
             Assert.AreEqual(result, "Happy");
         }
+        [Test]
+        public void Null_Return_Using_Custom_Exception()
+        {
+            MoodAnalyserClass analyse = new MoodAnalyserClass(null);
+            try
+            {
+
+                string result = analyse.AnalyzeMood();
+               // Assert.That(result, Is.EqualTo("Happy"));
+
+            }
+            catch(MoodAnlyzerCustomException e)
+            {
+                Assert.AreEqual("Null Input",e.Message);
+            }
+           
+        }
     }
 }
